@@ -15,6 +15,7 @@ jobs:
       - name: Check out vtt-world-builder 
         uses: actions/checkout@v2
         with:
+          repository: medarc/vtt-world-builder      
           ref: main
 
       - name: Checkout vtt-world 
