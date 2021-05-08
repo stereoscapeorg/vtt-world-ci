@@ -1,0 +1,46 @@
+name: Build-and-Release
+
+on: push
+
+jobs:
+
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest]
+
+    steps:
+      - name: Check out vtt-world-builder 
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Checkout vtt-world 
+        uses: actions/checkout@v2
+        with:
+          repository: stereoscape/vtt-world
+          path: vtt-world
+          ref: empty          
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Build/release Electron
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          build_script_name: buildwebpack
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          #release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          release: true
+          #windows_certs: ${{ secrets.windows_certs }}
+          
+          #windows_certs_password: ${{ secrets.windows_certs_password }}
