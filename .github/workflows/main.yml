@@ -24,6 +24,7 @@ jobs:
           TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
 
   release:
+    needs: file_sync
     runs-on: ${{ matrix.os }}
 
     strategy:
