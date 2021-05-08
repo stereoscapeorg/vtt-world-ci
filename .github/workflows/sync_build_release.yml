@@ -22,7 +22,7 @@ jobs:
             medarc/vtt-world-builder@master
           FILES: |
             package.json
-          TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
+          TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN0 }}
   
   #get vtt-world, vtt-world-builder, and build the application and deploy it to stereoscape/vtt-world releases
   Build_and_Release:
