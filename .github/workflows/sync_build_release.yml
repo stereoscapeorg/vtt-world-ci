@@ -1,13 +1,14 @@
-name: Build-and-Release
+name: Sync Build Release
 
 on: 
-  push:
+  #push:
   
   workflow_dispatch:
 
 jobs:
-  
-  file_sync:
+
+  #syncs packgage json of vtt-world to vtt-world-builder
+  File_Sync:
     runs-on: ubuntu-latest
     steps:
       - name: Fetching Local Repository
@@ -22,9 +23,10 @@ jobs:
           FILES: |
             package.json
           TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
-
-  release:
-    needs: file_sync
+  
+  #get vtt-world, vtt-world-builder, and build the application and deploy it to vtt-world releases
+  Build_and_Release:
+    needs: File_Sync
     runs-on: ${{ matrix.os }}
 
     strategy:
