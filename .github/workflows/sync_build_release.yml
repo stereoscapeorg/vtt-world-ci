@@ -7,14 +7,14 @@ on:
 
 jobs:
 
-  #syncs packgage json of vtt-world to vtt-world-builder
+  #sync packgage.json of stereoscape/vtt-world to medarc/vtt-world-builder
   File_Sync:
     runs-on: ubuntu-latest
     steps:
       - name: Fetching Local Repository
         uses: actions/checkout@master
         with:
-          repository: medarc/vtt-world           
+          repository: stereoscape/vtt-world           
       - name: File Sync
         uses: kbrashears5/github-action-file-sync@v2.0.0
         with:
@@ -24,7 +24,7 @@ jobs:
             package.json
           TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
   
-  #get vtt-world, vtt-world-builder, and build the application and deploy it to vtt-world releases
+  #get vtt-world, vtt-world-builder, and build the application and deploy it to stereoscape/vtt-world releases
   Build_and_Release:
     needs: File_Sync
     runs-on: ${{ matrix.os }}
@@ -59,7 +59,7 @@ jobs:
           build_script_name: buildwebpack
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
+          github_token: ${{ secrets.STEREOSCAPE_PUBLICREPO_TOKEN }}
 
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
