@@ -14,7 +14,8 @@ jobs:
       - name: Fetching stereoscape/vtt-world Repository
         uses: actions/checkout@master
         with:
-          repository: stereoscape/vtt-world           
+          repository: stereoscape/vtt-world
+          ref: staging
       - name: File Sync
         uses: kbrashears5/github-action-file-sync@v2.0.0
         with:
@@ -22,7 +23,7 @@ jobs:
             medarc/vtt-world-builder@master
           FILES: |
             package.json
-          TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN0 }}
+          TOKEN: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
   
   #get vtt-world, vtt-world-builder, and build the application and deploy it to stereoscape/vtt-world releases
   Build_and_Release:
