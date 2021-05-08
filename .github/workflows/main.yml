@@ -15,7 +15,8 @@ jobs:
       - name: Check out vtt-world-builder 
         uses: actions/checkout@v2
         with:
-          repository: medarc/vtt-world-builder      
+          repository: medarc/vtt-world-builder
+          token: ${{ secrets.MEDARC_PRIVATEREPO_TOKEN }}
           ref: main
 
       - name: Checkout vtt-world 
