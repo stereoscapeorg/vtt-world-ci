@@ -47,7 +47,7 @@ jobs:
         with:
           repository: stereoscape/vtt-world
           path: vtt-world
-          ref: empty          
+          ref: staging          
 
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
