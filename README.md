@@ -1,5 +1,3 @@
 # vtt-ci
 
-Github Actions 
-Sync Build Release
-Manual release 
+Github Actions -> Sync Build Release -> Manual release 
