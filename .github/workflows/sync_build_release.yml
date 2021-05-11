@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: stereoscape/vtt-world
-          ref: production
+          ref: master
       - name: File Sync
         uses: kbrashears5/github-action-file-sync@v2.0.0
         with:
